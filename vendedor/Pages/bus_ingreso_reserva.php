@@ -82,8 +82,8 @@ $("#datepicker").datepicker();
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+          <h1 class="h3 mb-2 text-gray-800">Datos</h1>
+          <p class="mb-4"> <a target="_blank" href="https://datatables.net"></a>.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -246,8 +246,6 @@ $("#datepicker").datepicker();
    });
 
    //Agregar Productos//
-
-
    function sendDataProduct(){
      $('.alertAddProduct').html('');
      $.ajax({
@@ -256,22 +254,21 @@ $("#datepicker").datepicker();
       async:true,
       data:$('#reserva').serialize(),
       
-    success:function(res){
-      console.log(res);
-      if(res =='error'){
-        var info =JSON.parse(res);
-        console.log(info);
-        
-        
+    success:function(data){
+      //console.log(data);
+      if(data =='error'){
+        $('.estado').html(data);
+      }else{
+        $('.estado').html(data);
       }
+      
+     
     },
     error:function(error){
       console.log(error);
-      
     }
     });
    }
-
 
    function closemodal(){
      $('.modal').fadeOut();
