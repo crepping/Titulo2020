@@ -75,6 +75,7 @@
         <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Ingresar Reserva:</h6>
+            <a class="collapse-item" href="../pages/bus_ingreso_reserva.php">Ingresar Reserva</a>
             <a class="collapse-item" href="login.html">Reservas Pendientes</a>
             <a class="collapse-item" href="register.html">Reservas Aceptadas</a>
             <a class="collapse-item" href="forgot-password.html">Reservas Canceladas</a>
