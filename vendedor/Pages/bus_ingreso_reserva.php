@@ -19,10 +19,44 @@ include '../login/session.php';
 
   <!-- Custom styles for this template -->
   <link href="../css/sb-admin-2.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- <script src="../js/fecha.js"></script> -->
   <!-- Custom styles for this page -->
   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({ 
+      minDate: '+0d',
+      dateFormat: 'dd-mm-yy'
+    });
+  });
+  </script>
+  <script>
+ $.datepicker.regional['es'] = {
+ closeText: 'Cerrar',
+ prevText: '< Ant',
+ nextText: 'Sig >',
+ currentText: 'Hoy',
+ monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+ monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+ dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+ dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+ dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+ weekHeader: 'Sm',
+ dateFormat: 'dd/mm/yy',
+ firstDay: 1,
+ isRTL: false,
+ showMonthAfterYear: false,
+ yearSuffix: ''
+ };
+ $.datepicker.setDefaults($.datepicker.regional['es']);
+$(function () {
+$("#datepicker").datepicker();
+});
+</script>
 </head>
 
 <body id="page-top">
@@ -99,24 +133,43 @@ include '../login/session.php';
           </button>
         </div>
         <div class="modal-body">
-        <form method="post" id="reserva" action="../f_guardar/reservar.php" onsubmit="event.preventDefault(); sendDataProduct();">
-        <div class="row">
-        <div class="col">
-        <input type="text" class="form-control" placeholder="" name="id" id="codigo">
-        </div>
-        <div class="col">
-        <?php //include '../f_buscar/ajax.php' ?>
-        <select required class="form-control" id="car" name="car" required>
-        </select>
-        </div>
-      </div>
-      <div class="modal-footer">
+        <form method="post" id="reserva"  onsubmit="event.preventDefault(); sendDataProduct();">
+        <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <select class="form-control form-control-user" id="car" name="car"></select>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" autocomplete="off" id="datepicker" name="datepicker" required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  <select class="form-control form-control-user" id= "hora" name="hora">
+                  <option value="10:00">10:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="12:00">12:00</option>
+                  <option value="13:00">13:00</option>
+                  <option value="14:00">14:00</option>
+                  <option value="15:00">15:00</option>
+                  </select>
+                  </div>
+                  
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="codigo" name="codigo" placeholder="Stock" required>
+                 </div>
+                 <p class="estado"></p>
+                <!-- <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="Text" class="form-control form-control-user" id="exampleInputPassword" name="precio" placeholder="Precio" required>
+                  </div>
+                </div> -->
+        <div class="modal-footer">
           <button class="btn btn-secondary" type="button" onclick="closemodal();" data-dismiss="modal">Cancelar</button>
           <button class="btn btn-primary" id="ingresar" type="submit">Ingresar Reserva</button>
-        </div>
+        </div> 
       </form>
         </div>
-        
+    
       </div>
     </div>
   </div>
@@ -149,7 +202,8 @@ include '../login/session.php';
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
   <script src="../js/custom.js"></script>
-
+  <script src="../js/jquery-ui.js"></script>
+  
   <!-- Page level plugins -->
   <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
@@ -201,13 +255,19 @@ include '../login/session.php';
       type: 'POST',
       async:true,
       data:$('#reserva').serialize(),
-    
-    success:function(response){
-      console.log(response);
-      alert("Ingreso exitoso");
+      
+    success:function(res){
+      console.log(res);
+      if(res =='error'){
+        var info =JSON.parse(res);
+        console.log(info);
+        
+        
+      }
     },
     error:function(error){
       console.log(error);
+      
     }
     });
    }
