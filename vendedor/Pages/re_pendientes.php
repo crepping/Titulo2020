@@ -1,7 +1,6 @@
 
 <?php 
 include '../login/session.php';
-//include '../f_buscar/ajax.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,45 +17,11 @@ include '../login/session.php';
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/sb-admin-2.css" rel="stylesheet">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <!-- <script src="../js/fecha.js"></script> -->
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+
   <!-- Custom styles for this page -->
   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker({ 
-      minDate: '+0d',
-      dateFormat: 'dd-mm-yy'
-    });
-  });
-  </script>
-  <script>
- $.datepicker.regional['es'] = {
- closeText: 'Cerrar',
- prevText: '< Ant',
- nextText: 'Sig >',
- currentText: 'Hoy',
- monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
- monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
- dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
- dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
- dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
- weekHeader: 'Sm',
- dateFormat: 'dd/mm/yy',
- firstDay: 1,
- isRTL: false,
- showMonthAfterYear: false,
- yearSuffix: ''
- };
- $.datepicker.setDefaults($.datepicker.regional['es']);
-$(function () {
-$("#datepicker").datepicker();
-});
-</script>
+
 </head>
 
 <body id="page-top">
@@ -82,8 +47,8 @@ $("#datepicker").datepicker();
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Datos</h1>
-          <p class="mb-4"> <a target="_blank" href="https://datatables.net"></a>.</p>
+          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -94,7 +59,7 @@ $("#datepicker").datepicker();
               <div class="table-responsive">
                 <table class="table table-bordered" id="productos" width="100%" cellspacing="0">
                   <thead>
-                    <?php include '../f_buscar/bus_ingreso_reserva.php'?>
+                    <?php include '../f_buscar/re_pendientes.php'?>
                   </tbody>
                 </table>
               </div>
@@ -123,70 +88,37 @@ $("#datepicker").datepicker();
   </a>
 
   <!-- Logout Modal-->
-<div class="modal fade" id="Ingreso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="Ingreso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ingresar Reserva</h5>
+          <h5 class="modal-title" id="exampleModalLabel">RESERVAR HORA</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body">Estas seguro de Reservar?.
         <form method="post" id="reserva"  onsubmit="event.preventDefault(); sendDataProduct();">
-        <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <select class="form-control form-control-user" id="car" name="car"></select>
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" autocomplete="off" id="datepicker" name="datepicker" required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                  <select class="form-control form-control-user" id= "hora" name="hora">
-                  <option value="10:00">10:00</option>
-                  <option value="11:00">11:00</option>
-                  <option value="12:00">12:00</option>
-                  <option value="13:00">13:00</option>
-                  <option value="14:00">14:00</option>
-                  <option value="15:00">15:00</option>
-                  </select>
-                  </div>
-                  
-                  <div class="col-sm-6">
+        <div class="col-sm-6">
                     <input type="hidden" class="form-control form-control-user" id="codigo" name="codigo" placeholder="Stock" required>
                  </div>
-                 <p class="estado"></p>
-                <!-- <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="Text" class="form-control form-control-user" id="exampleInputPassword" name="precio" placeholder="Precio" required>
-                  </div>
-                </div> -->
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" onclick="closemodal();" data-dismiss="modal">Cancelar</button>
-          <button class="btn btn-primary" id="ingresar" type="submit">Ingresar Reserva</button>
-        </div> 
-      </form>
+                 <BR>
+                 <BR>
+                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                 <button class="btn btn-primary" id="ingresar" type="submit">Reservar</button>
+        </form>
+        <HR>
+        <BR>
+        <BR>
+        <div class="col-sm-6">
+        <p class="estado"></p>
         </div>
-    
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="Ingresar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" onclick="closemodal();" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" type="submit">Logout</a>
+        <!--
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <button class="btn btn-primary" id="ingresar" type="submit">Reservar</button>
+          -->
         </div>
       </div>
     </div>
@@ -201,14 +133,13 @@ $("#datepicker").datepicker();
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
-  <script src="../js/custom.js"></script>
-  <script src="../js/jquery-ui.js"></script>
-  
+
   <!-- Page level plugins -->
   <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
+  <!--Envio Mensaje -->
   <script type="text/javascript">
    $('.product').click(function(event){
     event.preventDefault();
@@ -231,11 +162,6 @@ $("#datepicker").datepicker();
           $('#codigo').val(info[i].id_cliente);
           $('#car').val(info[i].id_cliente);
         }
-        var imprimir = "";
-        for (var i=0; i<info.length; i++){
-        imprimir += "<option value='"+info[i].id_vehiculo+"'>"+info[i].patente+"</option>";
-        }
-        $("#car").html(imprimir);
       }
     },
     error:function(error){
@@ -249,7 +175,7 @@ $("#datepicker").datepicker();
    function sendDataProduct(){
      $('.alertAddProduct').html('');
      $.ajax({
-      url:'../f_guardar/reservar.php',
+      url:'../f_update/re_confirmar.php',
       type: 'POST',
       async:true,
       data:$('#reserva').serialize(),
@@ -274,7 +200,6 @@ $("#datepicker").datepicker();
      $('.modal').fadeOut();
    }
   </script>
- 
   <script>
 $(document).ready(function() {
 $('div.dataTables_filter input').focus();
