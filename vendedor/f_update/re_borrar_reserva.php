@@ -18,25 +18,23 @@
 // 	echo $salida; 
 include "../config/config.php";
 $cnn = Conectar();
-$codigo = $_POST['codigo'];
+$codigo = $_POST['codigo1'];
 
-$ver ="SELECT * FROM reserva WHERE estado_reserva = '2' and id_reserva='$codigo'";
+$ver ="SELECT * FROM reserva WHERE estado_reserva = '3' and id_reserva='$codigo'";
 $busqueda= mysqli_query($cnn,$ver);
 if(mysqli_num_rows($busqueda)>0) { 
    echo"<br>"."<br>";
-   
-   echo '<div class="alert alert-danger"><strong>Oh no!</strong> Reserva ya Reservada.</div>';
+   echo '<div class="alert alert-danger"><strong>Oh no!</strong> Reserva ya fue Cancelada.</div>';
    $error =array("Error");
    json_encode($error);
 } else {
-$in="update reserva set estado_reserva=2 Where id_reserva='$codigo'";   
+$in="update reserva set estado_reserva=3 Where id_reserva='$codigo'";   
 $dato=mysqli_query($cnn,$in); 
 if (!$dato) {
-  echo '<div class="alert alert-danger"><strong>Oh no!</strong> Error al Aceptar La Reserva</div>';
+  echo '<div class="alert alert-danger"><strong>Oh no!</strong> Error al Cancelar La Reserva</div>';
 }else{
 echo"<br>"."<br>";
-
-echo '<div class="alert alert-success"><strong>Excelente!</strong> Reserva Aceptada</div>';
+echo '<div class="alert alert-success"><strong>Excelente!</strong> Reserva Cancelada</div>';
 //echo"<script type='text/javascript'>window.location='../pages/ingresoproductos.php'</script>";
 //echo"<script type='text/javascript'>window.location='alumnotodos.php'</script>";
     }

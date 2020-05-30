@@ -69,16 +69,16 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
+        <i class="far fa-calendar-plus"></i>
           <span>Reservas</span>
         </a>
         <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Ingresar Reserva:</h6>
             <a class="collapse-item" href="../pages/bus_ingreso_reserva.php">Ingresar Reserva</a>
-            <a class="collapse-item" href="re_pendientes.php">Reservas Pendientes</a>
-            <a class="collapse-item" href="register.html">Reservas Aceptadas</a>
-            <a class="collapse-item" href="forgot-password.html">Reservas Canceladas</a>
+            <a class="collapse-item" href="../pages/re_pendientes.php">Reservas Pendientes</a>
+            <a class="collapse-item" href="../pages/re_aceptadas.php">Reservas Aceptadas</a>
+            <a class="collapse-item" href="../pages/re_canceladas.php">Reservas Canceladas</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Lista Reservas:</h6>
             <a class="collapse-item" href="404.html">Todas las Reservas</a>

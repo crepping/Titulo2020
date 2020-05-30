@@ -59,7 +59,7 @@ include '../login/session.php';
               <div class="table-responsive">
                 <table class="table table-bordered" id="productos" width="100%" cellspacing="0">
                   <thead>
-                    <?php include '../f_buscar/re_pendientes.php'?>
+                    <?php include '../f_buscar/re_aceptadas.php'?>
                   </tbody>
                 </table>
               </div>
