@@ -16,10 +16,11 @@ if(mysqli_num_rows($busqueda)>0) {
 //echo"<script>alert('El producto ya Existe')</script>";
 //echo"<script type='text/javascript'>window.location='../pages/ingreso_proveedor.php'</script>";
 echo "<script> swal({
-  title: '¡ERROR!',
+  position: 'top-center',
   icon: 'error',
-  text: 'El Proveedor ya Existe',
-  type: 'error',
+  title: 'El Proveedor ya Existe',
+  buttons: false,
+  timer: 1500
 });</script>";
 
 //echo '<div class="alert alert-danger"><strong>Oh no!</strong> Reserva ya Reservada.</div>';
