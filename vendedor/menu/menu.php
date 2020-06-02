@@ -43,19 +43,19 @@
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
-        Admin Productos
+        Proveedores
       </div>
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Productos</span>
+        <i class="far fa-address-book"></i>
+          <span>Proveedor</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Productos:</h6>
-            <a class="collapse-item" href="../pages/ingresoproductos.php">Ingresar Producto</a>
-            <a class="collapse-item" href="../pages/lis_productos.php">Listado Productos</a>
+            <a class="collapse-item" href="../pages/ingreso_proveedor.php">Ingresar Proveedor</a>
+            <a class="collapse-item" href="../pages/lis_productos.php">Listado Proveedores</a>
           </div>
         </div>
       </li>

@@ -24,7 +24,6 @@ $ver ="SELECT * FROM reserva WHERE estado_reserva = '2' and id_reserva='$codigo'
 $busqueda= mysqli_query($cnn,$ver);
 if(mysqli_num_rows($busqueda)>0) { 
    echo"<br>"."<br>";
-   
    echo '<div class="alert alert-danger"><strong>Oh no!</strong> Reserva ya Reservada.</div>';
    $error =array("Error");
    json_encode($error);
